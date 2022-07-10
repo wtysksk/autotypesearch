@@ -103,6 +103,7 @@ v1.1
 
 v1.2
  Added "AutoTypeSearch" as the (invisible) window title for the search window to assist with automation
+ Added support for the "Copy user name" action. Use the Options window to choose this, if required.
 
 Attributions
 ------------

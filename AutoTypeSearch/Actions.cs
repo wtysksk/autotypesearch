@@ -9,6 +9,7 @@ namespace AutoTypeSearch
 		EditEntry,
 		ShowEntry,
 		OpenEntryUrl,
+		CopyUser,
 		CopyPassword,
 		PerformAutoTypePassword
 	}
