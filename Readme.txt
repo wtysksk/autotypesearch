@@ -101,6 +101,9 @@ v1.0
 v1.1
  Added Auto Type Password action (thanks to Chen Zhenge for contribution)
 
+v1.2
+ Added "AutoTypeSearch" as the (invisible) window title for the search window to assist with automation
+
 Attributions
 ------------
 Throbber image by FlipDarius http://www.mediawiki.org/wiki/File:Loading.gif
