@@ -51,6 +51,7 @@ namespace AutoTypeSearch
 			mSearchInNotes.Checked = Settings.Default.SearchNotes;
 			mSearchInTags.Checked = Settings.Default.SearchTags;
 			mSearchInOtherFields.Checked = Settings.Default.SearchCustomFields;
+			mKeepWindowOpen.Checked = Settings.Default.KeepSearchWindowOpen;
 			
 			mCaseSensitive.Checked = Settings.Default.CaseSensitive;
 			mExcludeExpired.Checked = Settings.Default.ExcludeExpired;
@@ -89,6 +90,7 @@ namespace AutoTypeSearch
 			Settings.Default.DefaultAction = (Actions)mDefaultAction.SelectedIndex;
 			Settings.Default.AlternativeAction = (Actions)mAlternativeAction.SelectedIndex;
 			Settings.Default.ShowHotKey = ShowHotKey;
+			Settings.Default.KeepSearchWindowOpen = mKeepWindowOpen.Checked;
 
 			ApplyHotKey();
 		}

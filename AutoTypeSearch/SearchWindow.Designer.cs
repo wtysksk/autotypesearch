@@ -28,6 +28,7 @@ namespace AutoTypeSearch
             this.mThrobber = new System.Windows.Forms.PictureBox();
             this.mResultsUpdater = new System.Windows.Forms.Timer(this.components);
             this.mNoResultsLabel = new System.Windows.Forms.Label();
+            this.mCloseButton = new System.Windows.Forms.Button();
             this.mLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mBanner)).BeginInit();
             this.mInfoBanner.SuspendLayout();
@@ -57,7 +58,7 @@ namespace AutoTypeSearch
             this.mResults.Location = new System.Drawing.Point(0, 98);
             this.mResults.Margin = new System.Windows.Forms.Padding(0);
             this.mResults.Name = "mResults";
-            this.mResults.Size = new System.Drawing.Size(523, 176);
+            this.mResults.Size = new System.Drawing.Size(523, 156);
             this.mResults.TabIndex = 1;
             this.mResults.TabStop = false;
             this.mResults.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mResults_MouseClick);
@@ -78,11 +79,12 @@ namespace AutoTypeSearch
             this.mLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mLayout.Location = new System.Drawing.Point(0, 0);
             this.mLayout.Name = "mLayout";
-            this.mLayout.RowCount = 4;
+            this.mLayout.RowCount = 5;
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mLayout.Size = new System.Drawing.Size(523, 274);
             this.mLayout.TabIndex = 2;
             // 
@@ -159,6 +161,19 @@ namespace AutoTypeSearch
             this.mNoResultsLabel.TabIndex = 5;
             this.mNoResultsLabel.Text = "No results found";
             // 
+            // mCloseButton
+            // 
+            this.mCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mCloseButton.Font = new System.Drawing.Font("Marlett", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.mCloseButton.Location = new System.Drawing.Point(503, -1);
+            this.mCloseButton.Name = "mCloseButton";
+            this.mCloseButton.Size = new System.Drawing.Size(21, 19);
+            this.mCloseButton.TabIndex = 9;
+            this.mCloseButton.Text = "r";
+            this.mCloseButton.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.mCloseButton.UseVisualStyleBackColor = true;
+            this.mCloseButton.Click += new System.EventHandler(this.mCloseButton_Click);
+            // 
             // SearchWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +181,7 @@ namespace AutoTypeSearch
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(523, 274);
             this.ControlBox = false;
+            this.Controls.Add(this.mCloseButton);
             this.Controls.Add(this.mNoResultsLabel);
             this.Controls.Add(this.mThrobber);
             this.Controls.Add(this.mLayout);
@@ -198,5 +214,6 @@ namespace AutoTypeSearch
 		private Label mInfoLabel;
 		private Panel mInfoBanner;
 		private PictureBox mInfoBannerImage;
-	}
+        private Button mCloseButton;
+    }
 }

@@ -63,6 +63,8 @@ namespace AutoTypeSearch
 			GlobalWindowManager.CustomizeControl(this);
 			UIUtil.SetExplorerTheme(mResults, true);
 			SetItemHeight();
+
+			mCloseButton.Visible = Settings.Default.KeepSearchWindowOpen;
 		}
 
 		public SearchWindow(MainForm mainForm, string infoBanner) : this()
@@ -158,7 +160,10 @@ namespace AutoTypeSearch
 
 		private void OnDeactivate(object sender, EventArgs eventArgs)
 		{
-			Close();
+			if (!Settings.Default.KeepSearchWindowOpen)
+			{
+				Close();
+			}
 		}
 
 		protected override void OnClosed(EventArgs e)
@@ -811,7 +816,10 @@ namespace AutoTypeSearch
 
 		private void PerformAction(Actions action, SearchResult searchResult)
 		{
-			Close();
+			if (!Settings.Default.KeepSearchWindowOpen)
+			{
+				Close();
+			}
 
 			if (searchResult != null)
 			{
@@ -926,6 +934,11 @@ namespace AutoTypeSearch
 				mMainForm.StartClipboardCountdown();
 			}
 		}
-		#endregion
-	}
+        #endregion
+
+        private void mCloseButton_Click(object sender, EventArgs e)
+        {
+			Close();
+        }
+    }
 }
