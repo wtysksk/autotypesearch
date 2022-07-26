@@ -58,7 +58,7 @@ namespace AutoTypeSearch
             this.mResults.Location = new System.Drawing.Point(0, 98);
             this.mResults.Margin = new System.Windows.Forms.Padding(0);
             this.mResults.Name = "mResults";
-            this.mResults.Size = new System.Drawing.Size(523, 156);
+            this.mResults.Size = new System.Drawing.Size(523, 176);
             this.mResults.TabIndex = 1;
             this.mResults.TabStop = false;
             this.mResults.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mResults_MouseClick);
@@ -79,12 +79,11 @@ namespace AutoTypeSearch
             this.mLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mLayout.Location = new System.Drawing.Point(0, 0);
             this.mLayout.Name = "mLayout";
-            this.mLayout.RowCount = 5;
+            this.mLayout.RowCount = 4;
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mLayout.Size = new System.Drawing.Size(523, 274);
             this.mLayout.TabIndex = 2;
             // 
