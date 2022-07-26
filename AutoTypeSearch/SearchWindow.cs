@@ -774,10 +774,10 @@ namespace AutoTypeSearch
 					return true;
 				case Keys.Enter:
 					PerformAction(Settings.Default.DefaultAction, mResults.SelectedItem as SearchResult);
-					break;
+					return true;
 				case Keys.Enter | Keys.Shift:
 					PerformAction(Settings.Default.AlternativeAction, mResults.SelectedItem as SearchResult);
-					break;
+					return true;
 			}
 			
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -855,6 +855,14 @@ namespace AutoTypeSearch
 		private void AutoTypeEntry(SearchResult searchResult, string sequence = null)
 		{
 			bool result;
+			var activeForm = ActiveForm;
+
+			var activeSearchWindow = activeForm as SearchWindow;
+			if (activeSearchWindow != null)
+			{
+				activeSearchWindow.Visible = false;
+			}
+			
 			if (ActiveForm != null)
 			{
 				result = AutoType.PerformIntoPreviousWindow(mMainForm, searchResult.Entry, searchResult.Database, sequence);
@@ -863,6 +871,13 @@ namespace AutoTypeSearch
 			{
 				result = AutoType.PerformIntoCurrentWindow(searchResult.Entry, searchResult.Database, sequence);
 			}
+
+			if (activeSearchWindow != null)
+			{
+				activeSearchWindow.Visible = true;
+				activeSearchWindow.Activate();
+			}
+
 			if (!result)
 			{
 				SystemSounds.Beep.Play();

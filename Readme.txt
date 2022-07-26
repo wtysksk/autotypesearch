@@ -107,6 +107,11 @@ v1.2
  Added "Keep Search Window Open" option. When enabled, the search window will not be automatically closed,
   and must be manually dismissed by the Escape key, or clicking the × button.
 
+v1.3
+ Fixed a couple of bugs with the Keep Search Window Open option and autotype, the window will now briefly
+  hide during auto-type and then re-show.
+ Fixed bug with extra unwanted whitespace that can appear at the bottom of the search window
+
 Attributions
 ------------
 Throbber image by FlipDarius http://www.mediawiki.org/wiki/File:Loading.gif
