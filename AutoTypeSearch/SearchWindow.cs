@@ -28,6 +28,7 @@ namespace AutoTypeSearch
 		private static readonly FieldInfo sMonoListBoxTopIndex = typeof(ListBox).GetField("top_index", BindingFlags.Instance | BindingFlags.NonPublic);
 
 		private readonly MainForm mMainForm;
+		private readonly string mWindowTitleTarget;
 		private readonly Bitmap mBannerImage;
 		private readonly Searcher mSearcher;
 
@@ -67,10 +68,11 @@ namespace AutoTypeSearch
 			mCloseButton.Visible = Settings.Default.KeepSearchWindowOpen;
 		}
 
-		public SearchWindow(MainForm mainForm, string infoBanner) : this()
+		public SearchWindow(MainForm mainForm, string infoBanner, string windowTitleTarget) : this()
 		{
 			mMainForm = mainForm;
-
+			mWindowTitleTarget = windowTitleTarget;
+			mWindowTitleTarget = windowTitleTarget;
 			mInfoBanner.Height = Math.Max(mInfoBannerImage.Height, mInfoLabel.Font.Height) + mInfoBanner.Margin.Vertical;
 			mInfoLabel.Padding = new Padding(0, (mInfoBanner.Height - mInfoLabel.Font.Height) / 2, 0, 0);
 			mInfoLabel.Text = infoBanner;
@@ -886,6 +888,35 @@ namespace AutoTypeSearch
 					Settings.Default.AlternativeAction != Actions.PerformAutoTypePassword)
 				{
 					PerformAction(Settings.Default.AlternativeAction, searchResult);
+				}
+			}
+			else
+			{
+				if (mWindowTitleTarget != null && Settings.Default.OfferToAddAutoTypeTarget)
+				{
+					var taskDialog = new VistaTaskDialog
+					{
+						MainInstruction = "Add AutoType target to Entry?",
+						Content = string.Format("Add window title:\n\n    {0}\n\nas an AutoType target to entry:\n\n    {1}", mWindowTitleTarget, searchResult.Entry.Strings.ReadSafe(PwDefs.TitleField)),
+						VerificationText = KPRes.DialogNoShowAgain,
+						WindowTitle = PwDefs.ShortProductName + " - AutoTypeShow",
+					};
+					taskDialog.SetIcon(VtdCustomIcon.Question);
+                    taskDialog.AddButton((int)DialogResult.OK, KPRes.YesCmd, null);
+                    taskDialog.AddButton((int)DialogResult.Cancel, KPRes.NoCmd, null);
+
+					if (taskDialog.ShowDialog((Form)activeSearchWindow ?? mMainForm))
+					{
+						if (taskDialog.Result == (int)DialogResult.OK)
+						{
+							searchResult.Entry.AutoType.Add(new AutoTypeAssociation(mWindowTitleTarget, string.Empty));
+						}
+
+						if (taskDialog.ResultVerificationChecked)
+						{
+							Settings.Default.OfferToAddAutoTypeTarget = false;
+						}
+					}
 				}
 			}
 		}

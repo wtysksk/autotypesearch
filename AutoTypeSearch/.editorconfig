@@ -1,0 +1,10 @@
+[*.cs]
+dotnet_naming_rule.private_or_internal_field.symbols = private_or_internal_field
+dotnet_naming_rule.private_or_internal_field.style = private_field
+dotnet_naming_rule.private_or_internal_field.severity = suggestion
+
+dotnet_naming_symbols.private_or_internal_field.applicable_kinds = field
+dotnet_naming_symbols.private_or_internal_field.applicable_accessibilities = internal, private, private_protected
+
+dotnet_naming_style.private_field.required_prefix = m
+dotnet_naming_style.private_field.capitalization = pascal_case

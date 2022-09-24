@@ -112,6 +112,10 @@ v1.3
   hide during auto-type and then re-show.
  Fixed bug with extra unwanted whitespace that can appear at the bottom of the search window
 
+v1.4
+ Offer to save the window title as an auto-type target for the selected entry when a result is found from
+  a search after an unsuccessful auto-type
+
 Attributions
 ------------
 Throbber image by FlipDarius http://www.mediawiki.org/wiki/File:Loading.gif

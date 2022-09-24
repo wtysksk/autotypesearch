@@ -10,6 +10,8 @@
     <RootNamespace>AutoTypeSearch</RootNamespace>
     <AssemblyName>AutoTypeSearch</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <!-- PlgX compiler only works with language up to C# 5 -->
+    <LangVersion>5</LangVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -101,6 +103,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include=".editorconfig" />
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

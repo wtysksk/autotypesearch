@@ -83,7 +83,8 @@ namespace AutoTypeSearch
 			AutoType.FilterCompilePre -= OnAutoType;
 
 			mAutoTypeSuccessful = true;
-		}
+			mLastAutoTypeWindowTitle = null;
+        }
 
 		private void OnAutoTypeEnd()
 		{
@@ -92,7 +93,7 @@ namespace AutoTypeSearch
 
 			if (!mAutoTypeSuccessful)
 			{
-				ShowSearch(String.Format(Resources.AutoTypeFailedMessage, mLastAutoTypeWindowTitle));
+				ShowSearch(String.Format(Resources.AutoTypeFailedMessage, mLastAutoTypeWindowTitle), mLastAutoTypeWindowTitle);
 			}
 		}
 		#endregion
@@ -174,10 +175,10 @@ namespace AutoTypeSearch
 
 		private void ShowSearch()
 		{
-			ShowSearch(null);
+			ShowSearch(null, null);
 		}
 
-		private void ShowSearch(string infoText)
+		private void ShowSearch(string infoText, string windowTitleTarget)
 		{
 			// Unlock, if required
 			mHost.MainWindow.ProcessAppMessage((IntPtr)Program.AppMessage.Unlock, IntPtr.Zero);
@@ -185,7 +186,7 @@ namespace AutoTypeSearch
 
 			if (mHost.MainWindow.IsAtLeastOneFileOpen())
 			{
-				var searchWindow = new SearchWindow(mHost.MainWindow, infoText);
+				var searchWindow = new SearchWindow(mHost.MainWindow, infoText, windowTitleTarget);
 				searchWindow.Show();
 				searchWindow.Activate();
 			}
