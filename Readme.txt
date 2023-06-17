@@ -11,7 +11,8 @@ lets you to easily pick the entry to auto-type.
 
 Installation
 ------------
-Place AutoTypeSearch.plgx in your KeePass Plugins folder.
+Place AutoTypeSearch.dll in your KeePass Plugins folder. If you are using a custom build of KeePass,
+place AutoTypeSearch.plgx in the Plugins folder too.
 
 
 Usage
@@ -115,6 +116,7 @@ v1.3
 v1.4
  Offer to save the window title as an auto-type target for the selected entry when a result is found from
   a search after an unsuccessful auto-type
+ Follow new KeePass recommendation to distribute both plgx and dll files in release zip
 
 Attributions
 ------------

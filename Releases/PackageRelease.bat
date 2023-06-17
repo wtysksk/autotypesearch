@@ -8,6 +8,15 @@ rd /s /q "%output%"
 
 copy "%~dp0..\Readme.txt" %buildoutputs%
 rem copy "%~dp0..\COPYING" %buildoutputs%
+:retry
+copy "%~dp0..\AutoTypeSearch\bin\Release\*.dll" %buildoutputs%
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo [31m Keepass still running, exit it first [0m
+    echo.
+    pause
+    goto :retry
+)
 
 rem don't include pdb files
 rem del %buildoutputs%\*.pdb
