@@ -111,7 +111,8 @@ namespace AutoTypeSearch
 					if (foundIndex >= 0)
 					{
 						// Found a match, create a search result and add it
-						AddResult(new SearchResult(context, entry, entry.Strings.ReadSafe(PwDefs.TitleField), fieldName, fieldValue, foundIndex, mTerm.Length));
+						var title = SearchWindow.ReadFieldValue(context, entry, PwDefs.TitleField, mResolveReferences);
+						AddResult(new SearchResult(context, entry, title, fieldName, fieldValue, foundIndex, mTerm.Length));
 						return true;
 					}
 				}

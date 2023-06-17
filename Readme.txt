@@ -117,6 +117,7 @@ v1.4
  Offer to save the window title as an auto-type target for the selected entry when a result is found from
   a search after an unsuccessful auto-type
  Follow new KeePass recommendation to distribute both plgx and dll files in release zip
+ Fix bug where references in title field were not being resolved when Resolve References option is enabled
 
 Attributions
 ------------

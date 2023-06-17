@@ -14,6 +14,7 @@ using KeePass.Forms;
 using KeePass.Resources;
 using KeePass.UI;
 using KeePass.Util;
+using KeePass.Util.Spr;
 using KeePassLib;
 using KeePassLib.Collections;
 using KeePassLib.Native;
@@ -271,7 +272,7 @@ namespace AutoTypeSearch
 			if (resultInTitleField)
 			{
 				// Found the result in the title field. Use Username for second line.
-				TextRenderer.DrawText(e.Graphics, KPRes.UserName + ": " + searchResult.Entry.Strings.ReadSafeEx(PwDefs.UserNameField), e.Font, line2Bounds, SystemColors.GrayText, TextFormatFlags.NoPadding | TextFormatFlags.EndEllipsis);
+				TextRenderer.DrawText(e.Graphics, KPRes.UserName + ": " + ReadFieldValue(searchResult.Database, searchResult.Entry, PwDefs.UserNameField, Settings.Default.ResolveReferences), e.Font, line2Bounds, SystemColors.GrayText, TextFormatFlags.NoPadding | TextFormatFlags.EndEllipsis);
 			}
 			else
 			{
@@ -985,6 +986,17 @@ namespace AutoTypeSearch
         private void mCloseButton_Click(object sender, EventArgs e)
         {
 			Close();
+        }
+
+        internal static string ReadFieldValue(PwDatabase context, PwEntry entry, string fieldName, bool resolveReferences)
+        {
+			var fieldValue = entry.Strings.ReadSafeEx(fieldName);
+			if (resolveReferences && fieldValue.IndexOf('{') >= 0) // Can't contain any references if no {
+            {
+                var sprContext = new SprContext(entry, context, SprCompileFlags.Deref) { ForcePlainTextPasswords = false };
+                return SprEngine.Compile(fieldValue, sprContext);
+            }
+			return fieldValue;
         }
     }
 }
