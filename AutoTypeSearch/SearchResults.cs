@@ -105,14 +105,48 @@ namespace AutoTypeSearch
 					}
 				}
 
+				var termToMatch = mTerm.Trim();
+				 
+
 				if (!String.IsNullOrEmpty(fieldValue))
 				{
-					var foundIndex = CultureInfo.CurrentCulture.CompareInfo.IndexOf(fieldValue, mTerm, mStringComparison);
+					// 带空格的
+					if (CultureInfo.CurrentCulture.CompareInfo.IndexOf(termToMatch, " ") > 0)
+					{
+						string[] termTokens = termToMatch.Split(' ');
+		
+						bool allmatch = true;
+						int firstMatch = -1;
+						foreach( var termToken in termTokens)
+                        {
+							int termIndex = CultureInfo.CurrentCulture.CompareInfo.IndexOf(fieldValue, termToken, mStringComparison);
+							if (firstMatch == -1)
+                            {
+								firstMatch = termIndex;
+							}
+
+							if (termIndex < 0)
+                            {
+								allmatch = false;
+								break;
+                            }
+                        }
+                        if (allmatch) 
+						{
+							// Found a match, create a search result and add it
+							var title = SearchWindow.ReadFieldValue(context, entry, PwDefs.TitleField, mResolveReferences);
+							AddResult(new SearchResult(context, entry, title, fieldName, fieldValue, firstMatch, termTokens[0].Length));
+							return true;
+						}
+
+					}
+
+					var foundIndex = CultureInfo.CurrentCulture.CompareInfo.IndexOf(fieldValue, termToMatch, mStringComparison);
 					if (foundIndex >= 0)
 					{
 						// Found a match, create a search result and add it
 						var title = SearchWindow.ReadFieldValue(context, entry, PwDefs.TitleField, mResolveReferences);
-						AddResult(new SearchResult(context, entry, title, fieldName, fieldValue, foundIndex, mTerm.Length));
+						AddResult(new SearchResult(context, entry, title, fieldName, fieldValue, foundIndex, termToMatch.Length));
 						return true;
 					}
 				}

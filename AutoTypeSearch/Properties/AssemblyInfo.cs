@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AutoTypeSearch")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Alex Vallat")]
+[assembly: AssemblyCompany("baige")]
 [assembly: AssemblyProduct("KeePass Plugin")]
-[assembly: AssemblyCopyright("Copyright © 2017 Alex Vallat")]
+[assembly: AssemblyCopyright("Copyright © 2023 白鸽")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

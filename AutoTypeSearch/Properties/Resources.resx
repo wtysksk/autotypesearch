@@ -151,4 +151,7 @@
   <data name="ShowEntry" xml:space="preserve">
     <value>Show entry in the main window</value>
   </data>
+  <data name="PerformAutoTypeCustomField" xml:space="preserve">
+    <value>Perform  auto-type custom field</value>
+  </data>
 </root>

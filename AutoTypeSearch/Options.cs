@@ -23,9 +23,10 @@ namespace AutoTypeSearch
 			InitializeComponent();
 
 			// Must mach order and values of Actions enum
-			var actions = new object[] { Resources.PerformAutoType, Resources.EditEntry, Resources.ShowEntry, Resources.OpenEntryUrl, Resources.CopyUser, Resources.CopyPassword, Resources.PerformAutoTypePassword };
+			var actions = new object[] { Resources.PerformAutoType, Resources.EditEntry, Resources.ShowEntry, Resources.OpenEntryUrl, Resources.CopyUser, Resources.CopyPassword, Resources.PerformAutoTypePassword,Resources.PerformAutoTypeCustomField };
 			mDefaultAction.Items.AddRange(actions);
 			mAlternativeAction.Items.AddRange(actions);
+			mThirdAction.Items.AddRange(actions);
 
 			// Read options
 			mShowOnFailedSearch.Checked = Settings.Default.ShowOnFailedAutoType;
@@ -59,6 +60,9 @@ namespace AutoTypeSearch
 
 			mDefaultAction.SelectedIndex = (int)Settings.Default.DefaultAction;
 			mAlternativeAction.SelectedIndex = (int)Settings.Default.AlternativeAction;
+			mThirdAction.SelectedIndex = (int)Settings.Default.ThirdAction;
+			mCustomField.Text = Settings.Default.UserDefinedAutoTypeField;
+
 		}
 
 		private Keys ShowHotKey
@@ -89,8 +93,10 @@ namespace AutoTypeSearch
 			Settings.Default.ResolveReferences = mResolveReferences.Checked;
 			Settings.Default.DefaultAction = (Actions)mDefaultAction.SelectedIndex;
 			Settings.Default.AlternativeAction = (Actions)mAlternativeAction.SelectedIndex;
+			Settings.Default.ThirdAction = (Actions)mThirdAction.SelectedIndex;
 			Settings.Default.ShowHotKey = ShowHotKey;
 			Settings.Default.KeepSearchWindowOpen = mKeepWindowOpen.Checked;
+			Settings.Default.UserDefinedAutoTypeField = mCustomField.Text;
 
 			ApplyHotKey();
 		}

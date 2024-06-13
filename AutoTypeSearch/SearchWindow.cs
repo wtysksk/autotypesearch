@@ -781,6 +781,9 @@ namespace AutoTypeSearch
 				case Keys.Enter | Keys.Shift:
 					PerformAction(Settings.Default.AlternativeAction, mResults.SelectedItem as SearchResult);
 					return true;
+				case Keys.Enter | Keys.Control:
+					PerformAction(Settings.Default.ThirdAction, mResults.SelectedItem as SearchResult);
+					return true;
 			}
 			
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -848,6 +851,9 @@ namespace AutoTypeSearch
 						break;
 					case Actions.PerformAutoTypePassword:
 						AutoTypeEntry(searchResult, "{PASSWORD}");
+						break;
+					case Actions.PerformAutoTypeCustomField:
+						AutoTypeEntry(searchResult, Settings.Default.UserDefinedAutoTypeField);
 						break;
 					default:
 						throw new ArgumentOutOfRangeException("action");

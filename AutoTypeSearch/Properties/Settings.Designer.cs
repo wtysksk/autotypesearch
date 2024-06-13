@@ -238,5 +238,38 @@ namespace AutoTypeSearch.Properties {
                 this["OfferToAddAutoTypeTarget"] = value;
             }
         }
+
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EditEntry")]
+        public global::AutoTypeSearch.Actions ThirdAction
+        {
+            get
+            {
+                return ((global::AutoTypeSearch.Actions)(this["ThirdAction"]));
+            }
+            set
+            {
+                this["ThirdAction"] = value;
+            }
+        }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserDefinedAutoTypeField
+        {
+            get
+            {
+                return ((string)(this["UserDefinedAutoTypeField"]));
+            }
+            set
+            {
+                this["UserDefinedAutoTypeField"] = value;
+            }
+        }
     }
 }

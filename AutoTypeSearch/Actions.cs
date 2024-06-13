@@ -11,6 +11,7 @@ namespace AutoTypeSearch
 		OpenEntryUrl,
 		CopyUser,
 		CopyPassword,
-		PerformAutoTypePassword
+		PerformAutoTypePassword,
+		PerformAutoTypeCustomField
 	}
 }

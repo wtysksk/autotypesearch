@@ -35,25 +35,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <Choose>
-    <When Condition="'$(Configuration)'=='Debug'">
-      <ItemGroup>
-        <ProjectReference Include="..\..\KeePass-Source\KeePass\KeePass.csproj">
-          <Project>{10938016-DEE2-4A25-9A5A-8FD3444379CA}</Project>
-          <Name>KeePass</Name>
-          <Private>False</Private>
-        </ProjectReference>
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="KeePass">
-          <HintPath>..\..\KeePass\KeePass.exe</HintPath>
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
+    <When Condition="'$(Configuration)'=='Debug'" />
+    <Otherwise />
   </Choose>
   <ItemGroup>
+    <Reference Include="KeePass">
+      <HintPath>..\..\KeePass-Source\Build\KeePass\Debug\KeePass.exe</HintPath>
+    </Reference>
+    <Reference Include="KeePass">
+      <HintPath>..\..\KeePass-Source\Build\KeePass\Release\KeePass.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -97,6 +88,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchWindow.resx">
       <DependentUpon>SearchWindow.cs</DependentUpon>
